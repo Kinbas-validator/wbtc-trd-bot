@@ -1,0 +1,6 @@
+.env
+*.env
+data/
+*.sqlite3*
+*.lock
+__pycache__/

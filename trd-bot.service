@@ -1,0 +1,24 @@
+[Unit]
+Description=Yield Basis WBTC TRD Telegram alerts
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=trd-bot
+Group=trd-bot
+WorkingDirectory=/opt/trd-bot
+EnvironmentFile=/etc/trd-bot.env
+Environment=STATE_FILE=/var/lib/trd-bot/state.sqlite3
+ExecStart=/usr/bin/python3 /opt/trd-bot/bot.py
+Restart=on-failure
+RestartSec=15
+StateDirectory=trd-bot
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
